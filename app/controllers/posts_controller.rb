@@ -63,6 +63,15 @@ class PostsController < ApplicationController
     end
   end
 
+  def sibur
+    @post = Post.find(params[:id])
+    @post.increment!(:sr)
+    
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
   private
 
   def set_post
