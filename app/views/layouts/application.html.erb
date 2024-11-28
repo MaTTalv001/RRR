@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="fantasy">
   <head>
     <title><%= content_for(:title) || "Myapp" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -18,10 +18,7 @@
   </head>
 
   <body>
-  <% if logged_in? %> <%= render 'shared/header' %>
-    <% else %>
-    <%= render 'shared/before_login_header' %>
-    <% end %>
+    <%= render "shared/header" %>
     <%= yield %>
   </body>
 </html>

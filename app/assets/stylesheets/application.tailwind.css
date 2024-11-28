@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* app/assets/stylesheets/application.css など */
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.btn-lg {
+  @apply px-8 py-3 text-lg;
+}

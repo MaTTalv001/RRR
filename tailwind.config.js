@@ -5,5 +5,8 @@ module.exports = {
     './app/assets/stylesheets/**/*.css',
     './app/javascript/**/*.js'
   ],
+  daisyui: {
+    themes: ["light", "fantasy", "cupcake"],
+  },
   plugins: [require("daisyui")],
 }
