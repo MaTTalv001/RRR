@@ -10,7 +10,7 @@
     <p class="badge badge-primary mb-2"><%= post.category %></p>
     
     <div class="flex gap-4 mb-2">
- <div class="flex items-center gap-2">
+ <div class="flex items-center gap-2 tooltip" data-tip="頻繁にある物量的あるある">
    <%= button_to mechar_post_path(post), class: "btn btn-ghost btn-sm", form: { data: { turbo: true } } do %>
      <%= image_tag "mechaR_s.png" %>
    <% end %>
@@ -19,7 +19,7 @@
    </span>
  </div>
 
- <div class="flex items-center gap-2">
+ <div class="flex items-center gap-2 tooltip" data-tip="深みのある いぶし銀あるある">
    <%= button_to sibur_post_path(post), class: "btn btn-ghost btn-sm", form: { data: { turbo: true } } do %>
      <%= image_tag "sibuR_s.png" %>
    <% end %>
