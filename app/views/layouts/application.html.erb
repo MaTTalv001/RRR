@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html data-theme="fantasy">
   <head>
-    <title><%= content_for(:title) || "Myapp" %></title>
+    <%= display_meta_tags(default_meta_tags) %>
+    <title><%= content_for(:title) || "RR" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -15,6 +16,7 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   </head>
 
   <body>

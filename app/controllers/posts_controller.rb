@@ -1,6 +1,7 @@
 # app/controllers/posts_controller.rb
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  helper_method :prepare_meta_tags
 
 
   def index
@@ -10,7 +11,10 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  def show; end
+  def show
+  @post = Post.find(params[:id])
+  prepare_meta_tags(@post)
+end
 
   def new
     @post = Post.new
@@ -92,5 +96,28 @@ end
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
   end
+
+  def prepare_meta_tags(post)
+  image_url = if post.image.attached?
+    rails_blob_url(post.image)
+  else
+    "#{request.base_url}/default_ogp.png"
+  end
+
+  set_meta_tags(
+    og: {
+      title: "#{post.category}のあるある",
+      description: post.body,
+      type: 'article',
+      url: post_url(post),
+      image: image_url,
+      site_name: 'Reality Reflections'
+    },
+    twitter: {
+      card: 'summary_large_image',
+      image: image_url
+    }
+  )
+end
 
 end

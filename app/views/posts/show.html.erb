@@ -1,0 +1,56 @@
+<div class="container mx-auto p-4">
+  <div class="card bg-base-100 shadow-xl max-w-2xl mx-auto">
+    <% if @post.image.attached? %>
+      <figure>
+        <%= image_tag @post.image.variant(resize: "512x512"), class: "w-full h-64 object-cover" %>
+      </figure>
+    <% end %>
+    
+    <div class="card-body">
+      <p class="mb-4 text-lg"><%= @post.body %></p>
+      <p class="badge badge-primary mb-2"><%= @post.category %></p>
+      
+      <div class="flex gap-4 mb-2">
+        <div class="flex items-center gap-2 tooltip" data-tip="頻繁にある物量的あるある">
+          <%= button_to mechar_post_path(@post), class: "btn btn-ghost btn-sm", form: { data: { turbo: true } } do %>
+            <%= image_tag "mechaR_s.png" %>
+          <% end %>
+          <span id="<%= dom_id(@post, :mr_count) %>" class="font-bold text-lg">
+            <%= @post.mr %>
+          </span>
+        </div>
+
+        <div class="flex items-center gap-2 tooltip" data-tip="深みのある いぶし銀あるある">
+          <%= button_to sibur_post_path(@post), class: "btn btn-ghost btn-sm", form: { data: { turbo: true } } do %>
+            <%= image_tag "sibuR_s.png" %>
+          <% end %>
+          <span id="<%= dom_id(@post, :sr_count) %>" class="font-bold text-lg">
+            <%= @post.sr %>
+          </span>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center text-sm text-gray-600">
+        <div>
+          <%= @post.name %>
+          <span class="ml-2"><%= l @post.created_at, format: :long %></span>
+        </div>
+        <div>
+          <% share_url = CGI.escape(post_url(@post)) %>
+          <% share_text = CGI.escape("#{@post.category}のあるある\n#{@post.body}") %>
+          <%= link_to "https://twitter.com/intent/tweet?url=#{share_url}&text=#{share_text}",
+              target: '_blank',
+              rel: 'noopener noreferrer',
+              class: "btn btn-ghost btn-sm tooltip",
+              data: { tip: "Xでシェア" } do %>
+            <i class="fa-brands fa-x-twitter"></i>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <%= link_to "戻る", posts_path, class: "btn btn-outline" %>
+      </div>
+    </div>
+  </div>
+</div>

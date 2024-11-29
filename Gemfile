@@ -69,3 +69,4 @@ gem 'ransack'
 gem 'kaminari', "1.2.2"
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
+gem 'meta-tags'
