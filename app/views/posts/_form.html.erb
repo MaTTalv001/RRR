@@ -1,4 +1,4 @@
-<%= form_with(model: post, class: "space-y-4") do |f| %>
+<%= form_with(model: post, class: "space-y-4", id: "post-form") do |f| %>
   <% if post.errors.any? %>
     <div class="alert alert-error">
       <ul>
@@ -10,26 +10,26 @@
   <% end %>
 
   <div>
-    <%= f.label :name, "投稿者名", class: "label" %>
-    <%= f.text_field :name, class: "input input-bordered w-full" %>
+    <%= f.label :name, "投稿者", class: "label" %>
+    <%= f.text_field :name, class: "input input-bordered w-full", placeholder: "名無しのあるある", required: true %>
   </div>
 
   <div>
     <%= f.label :category, "カテゴリー", class: "label" %>
     <%= f.select :category, 
-        ['プログラミング', '日常・休日', '仕事', 'アニメ・漫画などの展開', '性格・特性'], 
+        ['RUNTEQ', 'エンジニア・プログラミング', '仕事・学校', '日常生活', 'アニメなど創作物の設定','地域','思い出'], 
         { prompt: 'カテゴリーを選択してください' }, 
-        { class: "select select-bordered w-full" } 
+        { class: "select select-bordered w-full", required: true } 
     %>
   </div>
 
   <div>
-    <%= f.label :body, "投稿内容", class: "label" %>
-    <%= f.text_area :body, class: "textarea textarea-bordered w-full h-32" %>
+    <%= f.label :body, "あるある投稿", class: "label" %>
+    <%= f.text_area :body, class: "textarea textarea-bordered w-full h-32", required: true, maxlength: 50 %>
   </div>
 
   <div class="mt-4">
-    <%= f.submit "投稿する", class: "btn btn-primary" %>
+    <%= f.submit "あるある言う", class: "btn btn-primary", id: "submit-button", disabled: true %>
     <%= link_to "戻る", posts_path, class: "btn ml-2" %>
   </div>
 <% end %>
