@@ -1,0 +1,5 @@
+<li>
+  <%= link_to_unless page.current?, page, url_for(params.merge(page: page)), 
+    class: page.current? ? 'btn btn-primary' : 'btn btn-ghost',
+    remote: remote %>
+</li>

@@ -4,11 +4,53 @@
     <%= link_to "あるある言う", new_post_path, class: "btn btn-primary" %>
   </div>
 
+  <div class="mb-4 flex flex-wrap gap-4">
+    <div class="dropdown dropdown-hover">
+      <div tabindex="0" role="button" class="btn m-1">投稿日時でソート</div>
+      <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+        <li>
+          <%= link_to "新しい順", posts_path(sort: 'created_at', direction: 'desc') %>
+        </li>
+        <li>
+          <%= link_to "古い順", posts_path(sort: 'created_at', direction: 'asc') %>
+        </li>
+      </ul>
+    </div>
+
+    <div class="dropdown dropdown-hover">
+      <div tabindex="0" role="button" class="btn m-1">めちゃRでソート</div>
+      <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+        <li>
+          <%= link_to "多い順", posts_path(sort: 'mr', direction: 'desc') %>
+        </li>
+        <li>
+          <%= link_to "少ない順", posts_path(sort: 'mr', direction: 'asc') %>
+        </li>
+      </ul>
+    </div>
+
+    <div class="dropdown dropdown-hover">
+      <div tabindex="0" role="button" class="btn m-1">シブRでソート</div>
+      <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+        <li>
+          <%= link_to "多い順", posts_path(sort: 'sr', direction: 'desc') %>
+        </li>
+        <li>
+          <%= link_to "少ない順", posts_path(sort: 'sr', direction: 'asc') %>
+        </li>
+      </ul>
+    </div>
+  </div>
+
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     <% if @posts.any? %>
       <%= render @posts %>
     <% else %>
       <p>あるあるがありません。</p>
     <% end %>
+  </div>
+
+  <div class="mt-8 flex justify-center">
+    <%= paginate @posts %>
   </div>
 </div>

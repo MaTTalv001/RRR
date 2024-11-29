@@ -1,18 +1,22 @@
 <div class="min-h-screen bg-base-100">
-  <div class="container mx-auto flex flex-col md:flex-row items-center justify-between p-8 gap-8">
+  <div class="container mx-auto flex flex-col md:flex-row items-center justify-between p-8 gap-12 max-w-6xl">
     <!-- 左側のロゴコンテナ -->
     <div class="w-full md:w-1/2">
       <%= image_tag "RR_top.png", class: "w-full h-auto" %>
     </div>
 
     <!-- 右側のテキスト・ボタンコンテナ -->
-    <div class="w-full md:w-1/2 text-center md:text-left space-y-6">
-      <h4 class="text-xl">あるあるを寄せ合うSNS</h4>
-      <h1 class="text-5xl font-bold">R R</h1>
-      <h3 class="text-2xl font-bold">Reality Reflections</h3>
+    <div class="w-full md:w-1/2 text-center md:text-left space-y-8 px-4 md:px-8">
+      <div class="space-y-4">
+        <h4 class="text-2xl text-gray-600">あるあるを寄せ合うSNS</h4>
+        <h1 class="text-6xl font-bold tracking-wide">R R</h1>
+        <h3 class="text-3xl font-bold text-gray-800">Reality Reflections</h3>
+      </div>
       
-      <%= link_to 'posts/', data: { turbo: false } do %>
-        <button class="btn btn-neutral mt-4">あるある言いたい</button>
+      <%= link_to 'posts/', data: { turbo: false }, class: "inline-block" do %>
+        <button class="btn btn-neutral btn-lg mt-8 px-8 hover:scale-105 transition-transform">
+          あるある言いたい
+        </button>
       <% end %>
     </div>
   </div>

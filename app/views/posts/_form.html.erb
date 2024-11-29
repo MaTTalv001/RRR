@@ -1,3 +1,5 @@
+<%# app/views/posts/new.html.erb %>
+
 <%= form_with(model: post, class: "space-y-4", id: "post-form") do |f| %>
   <% if post.errors.any? %>
     <div class="alert alert-error">
@@ -17,7 +19,7 @@
   <div>
     <%= f.label :category, "カテゴリー", class: "label" %>
     <%= f.select :category, 
-        ['RUNTEQ', 'エンジニア・プログラミング', '仕事・学校', '日常生活', 'アニメなど創作物の設定','地域','思い出'], 
+        ['RUNTEQ', 'エンジニア・プログラミング', '仕事・職業','学校','休暇','家族','友達','日常生活','アニメなど創作物','地域','子供の頃'], 
         { prompt: 'カテゴリーを選択してください' }, 
         { class: "select select-bordered w-full", required: true } 
     %>
@@ -33,3 +35,27 @@
     <%= link_to "戻る", posts_path, class: "btn ml-2" %>
   </div>
 <% end %>
+
+<!-- ローディングモーダル -->
+<dialog id="loading-modal" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">あるあるを生成中です</h3>
+    <div class="flex justify-center items-center py-4">
+      <span class="loading loading-spinner loading-lg"></span>
+    </div>
+    <p class="text-center">しばらくお待ちください...</p>
+  </div>
+</dialog>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('post-form');
+  const modal = document.getElementById('loading-modal');
+  
+  if (form) {
+    form.addEventListener('submit', function() {
+      modal.showModal();
+    });
+  }
+});
+</script>

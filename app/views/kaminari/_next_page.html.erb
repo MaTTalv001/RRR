@@ -1,0 +1,6 @@
+<li>
+  <%= link_to_unless current_page.last?, raw('次へ &raquo;'), url, 
+    rel: 'next', 
+    remote: remote, 
+    class: 'btn btn-ghost' %>
+</li>
