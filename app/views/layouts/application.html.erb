@@ -18,6 +18,15 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <% if Rails.env.production? %>
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:site" content="@RckLVnPtRv61824" />
+      <meta property="og:url" content="https://rrr-8boz.onrender.com/" />
+      <meta property="og:title" content="Reality Reflections ~あるあるを寄せ合うSNS~" />
+      <meta property="og:description" content="わかりみの深い「あるある」を皆で共有するアプリ。投稿内容はAIでイラスト化します。" />
+      <meta property="og:image" content="<%= image_url "RR_top.png" %>" />
+<% end %>
   
   </head>
 
