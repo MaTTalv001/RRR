@@ -5,9 +5,12 @@ class PostsController < ApplicationController
 
 
   def index
+    # ソートとページネーションのパラメータを許可
+    @permitted_params = params.permit(:page, :sort, :direction)
+    
     @posts = Post.order(sort_column => sort_direction)
-               .page(params[:page])
-               .per(9)
+                 .page(@permitted_params[:page])
+                 .per(12)
     @post = Post.new
   end
 
